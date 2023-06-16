@@ -1,20 +1,32 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
-from kivy.uix.widget import Widget
+from kivy.core.window import Window
 from kivy.graphics import Color, Line
+from kivy.uix.widget import Widget
 
-Builder.load_file('layout.kv')
+Builder.load_file('main.kv')
 
-class MyWidget(BoxLayout):
-    pass
+class DrawingWidget(Widget):
+    def on_touch_down(self, touch):
+        if self.collide_point(*touch.pos):
+            if touch.button == 'left':
+                with self.canvas:
+                    Color(1, 0, 0, 1)
+                    touch.ud["line"] = Line(points=(touch.x, touch.y), width=50)
 
-class MyApp(App):
+    def on_touch_move(self, touch):
+        if self.collide_point(*touch.pos):
+            if touch.button == 'left':
+                touch.ud["line"].points += (touch.x, touch.y)
+
+class HomeWidget(BoxLayout):
+    def button_clicked(self):
+        print("Window Size", Window.size)
+
+class FirstApp(App):
     def build(self):
-        return MyWidget()
-        
+        return HomeWidget()
+
 if __name__ == '__main__':
-    MyApp().run()
+    FirstApp().run()

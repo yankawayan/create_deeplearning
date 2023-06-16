@@ -1,0 +1,36 @@
+<HomeWidget>:
+    size_hint: 1, 1
+    orientation:'vertical'
+    BoxLayout:
+        size_hint: 1, 0.1
+        Label:
+            text: 'Header'
+    BoxLayout:
+        size_hint: 1, 0.6
+        Scatter:
+            do_translation: False
+            do_rotation: False
+            do_scale: False
+            DrawingWidget:
+                id: drawing_widget
+    BoxLayout:
+        size_hint: 1, 0.1
+        BoxLayout:
+            size_hint: 0.5, 1
+            padding: 10
+            Button:
+                text: 'Button 1'
+                on_press: root.button_clicked()
+        BoxLayout:
+            size_hint: 0.5, 1
+            padding: 10
+            Button:
+                text: 'Button 2'
+    BoxLayout:
+        size_hint: 1, 0.1
+        Label:
+            text: 'Answer'
+    BoxLayout:
+        size_hint: 1, 0.1
+        Label:
+            text: 'Footer'
