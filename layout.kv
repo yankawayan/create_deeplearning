@@ -1,0 +1,24 @@
+<MyWidget>:
+    orientation:'vertical'
+    BoxLayout:
+        Label:
+            text: 'Header'
+    BoxLayout: 
+        canvas:
+            Color:
+                rgba:1,1,1,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: 'Hello, World!'
+    BoxLayout:
+        BoxLayout:
+            Button:
+                text: 'Button 1'
+        BoxLayout:
+            Button:
+                text: 'Button 2'
+    BoxLayout:
+        Label:
+            text: 'Footer'
