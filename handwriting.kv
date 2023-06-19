@@ -1,0 +1,66 @@
+<MainLayout>:
+    orientation: 'vertical'
+    BoxLayout:
+        size_hint: 1, 0.9
+        BoxLayout:
+            BoxLayout:
+                size_hint: 0.1625, 1
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            DrawingWidget:
+                id: drawing_widget
+                size_hint: 0.675, 1
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            BoxLayout:
+                size_hint: 0.1625, 1
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 0
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+    BoxLayout:
+        size_hint: 1, 0.1
+        Button:
+            text: 'Clear'
+            size_hint: 0.3, 1
+            on_release: root.clear_canvas()
+        Button:
+            id: check_button
+            text: 'check'
+            size_hint: 0.4, 1
+            on_release: root.show_window_size()
+        Button:
+            text: 'Save'
+            size_hint: 0.3, 1
+            on_release: root.save_image()
+
+<SavePopup>:
+    title: 'Save Image'
+    size_hint: None, None
+    size: 300, 200
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+
+        TextInput:
+            id: filename_input
+            hint_text: 'Enter filename (without extension)'
+            multiline: False
+            size_hint: 1, 0.5
+
+        Button:
+            text: 'Save'
+            size_hint: 1, 0.5
+            on_release: root.save()
