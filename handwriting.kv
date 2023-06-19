@@ -7,7 +7,7 @@
                 size_hint: 0.1625, 1
                 canvas.before:
                     Color:
-                        rgba: 0, 0, 0, 1
+                        rgba: 1, 1, 1, 1
                     Rectangle:
                         pos: self.pos
                         size: self.size
@@ -16,7 +16,7 @@
                 size_hint: 0.675, 1
                 canvas.before:
                     Color:
-                        rgba: 1, 1, 1, 1
+                        rgba: 0, 0, 0, 1
                     Rectangle:
                         pos: self.pos
                         size: self.size
@@ -24,7 +24,7 @@
                 size_hint: 0.1625, 1
                 canvas.before:
                     Color:
-                        rgba: 0, 0, 0, 0
+                        rgba: 1, 1, 1, 1
                     Rectangle:
                         pos: self.pos
                         size: self.size
@@ -39,7 +39,7 @@
             id: check_button
             text: 'check'
             size_hint: 0.4, 1
-            on_release: root.show_window_size()
+            on_release: root.check_img_to_num()
         Button:
             text: 'Save'
             size_hint: 0.3, 1

@@ -3,14 +3,28 @@
   
   使用言語：python
   
+  アプリ概要：
+    手書きで数字を入力し、ボタンを押すとその数字が0から9のどれにあたるのか、とその精度を表示する。
+
+  学習用メソッド、その他多数使用しないパーツについて適切な処置、及び検討が必要。
 """
 
 file:
   main.py
-    content : 手書きの文字を認識するアプリのメイン
+    content : 手書きの文字を認識するアプリ
     
-  main.kv
-    content : アプリのメインで使用するレイアウト
+  handwriting.kv
+    content : アプリのメインで使用するレイアウト、ポップアップ用レイアウト
+
+  sc_09011.binaryfile
+    content : 学習済み重みデータ、バイアスデータを保存したファイル
+    # 学習時のミスでactivationがrelu関数を使用(sigmoidではない)
+
+  multi_layer_extend.py
+    content : 全結合多層ニューラルネットクラス
+
+  layer.py
+    content : レイヤクラス
     
   その他
     テストファイル
