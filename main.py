@@ -25,6 +25,7 @@ class DrawingWidget(Widget):
         if self.collide_point(*touch.pos):
             touch.ud["line"].points += (touch.x, touch.y)
 
+    #要改善(機能を分ける)
     def capture_image(self,filename):
         filename = filename + ".png"
         self.export_to_png(filename)
@@ -33,8 +34,12 @@ class DrawingWidget(Widget):
         os.remove(filename)
         image = Image.open(io.BytesIO(png_data))
         resized_image = image.resize((28, 28))
-        grayscale_image = resized_image.convert("L")
-        pixel_list = list(grayscale_image.getdata())
+        #grayscale_image = resized_image.convert("L")
+
+        threshold = 128  # しきい値の設定
+        bw_image = resized_image.convert("L").point(lambda x: 255 if x >= threshold else 0, mode="1")
+        
+        pixel_list = list(bw_image.getdata())
         img_arr = np.array(pixel_list)
         num = hand_write_img_to_num(img_arr)
 
